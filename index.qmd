@@ -310,7 +310,87 @@ comparison_data = pd.merge(
     on='home', how='inner'
 )
 
-## TODO: Create the visualization
+# Create facet visualization showing total runs for 2010 and 2021
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 8))
+
+# Prepare data for both years
+avgDF_2010_sorted = avgDF_2010.sort_values('totalRuns', ascending=True)
+avgDF_2021_sorted = avgDF_2021.sort_values('totalRuns', ascending=True)
+
+# Create color arrays for highlighting Colorado
+colorado_colors_2010 = ["darkorchid" if stadium == "COL" else "lightgrey" 
+                       for stadium in avgDF_2010_sorted.home]
+colorado_colors_2021 = ["darkorchid" if stadium == "COL" else "lightgrey" 
+                       for stadium in avgDF_2021_sorted.home]
+
+# 2010 Visualization
+bars_2010 = ax1.barh(avgDF_2010_sorted.home, avgDF_2010_sorted.totalRuns, color=colorado_colors_2010)
+ax1.set_title("Average Runs Per Game - 2010 Season", fontsize=14, fontweight='bold', pad=20)
+ax1.set_xlabel("Average Runs Per Game", fontsize=12)
+ax1.set_ylabel("Stadium (Home Team)", fontsize=12)
+ax1.grid(True, alpha=0.3)
+
+# Add annotation for Colorado in 2010
+if "COL" in avgDF_2010_sorted.home.values:
+    colorado_index_2010 = avgDF_2010_sorted[avgDF_2010_sorted.home == "COL"].index[0]
+    colorado_runs_2010 = avgDF_2010_sorted[avgDF_2010_sorted.home == "COL"]["totalRuns"].iloc[0]
+    ax1.annotate(f"COL: {colorado_runs_2010:.2f}", 
+                xy=(colorado_runs_2010, colorado_index_2010), 
+                xytext=(colorado_runs_2010 + 0.3, colorado_index_2010),
+                arrowprops=dict(arrowstyle='->', color='darkorchid', lw=2),
+                fontsize=10, fontweight='bold', color='darkorchid')
+
+# 2021 Visualization
+bars_2021 = ax2.barh(avgDF_2021_sorted.home, avgDF_2021_sorted.totalRuns, color=colorado_colors_2021)
+ax2.set_title("Average Runs Per Game - 2021 Season", fontsize=14, fontweight='bold', pad=20)
+ax2.set_xlabel("Average Runs Per Game", fontsize=12)
+ax2.set_ylabel("Stadium (Home Team)", fontsize=12)
+ax2.grid(True, alpha=0.3)
+
+# Add annotation for Colorado in 2021
+if "COL" in avgDF_2021_sorted.home.values:
+    colorado_index_2021 = avgDF_2021_sorted[avgDF_2021_sorted.home == "COL"].index[0]
+    colorado_runs_2021 = avgDF_2021_sorted[avgDF_2021_sorted.home == "COL"]["totalRuns"].iloc[0]
+    ax2.annotate(f"COL: {colorado_runs_2021:.2f}", 
+                xy=(colorado_runs_2021, colorado_index_2021), 
+                xytext=(colorado_runs_2021 + 0.3, colorado_index_2021),
+                arrowprops=dict(arrowstyle='->', color='darkorchid', lw=2),
+                fontsize=10, fontweight='bold', color='darkorchid')
+
+# Add overall title
+fig.suptitle("Colorado Rockies Stadium Performance: 2010 vs 2021", 
+             fontsize=16, fontweight='bold', y=0.95)
+
+# Add legend
+colorado_bar = plt.Rectangle((0,0),1,1, color="darkorchid", label="Colorado Rockies")
+other_bar = plt.Rectangle((0,0),1,1, color="lightgrey", label="Other Stadiums")
+fig.legend(handles=[colorado_bar, other_bar], loc='upper center', 
+           bbox_to_anchor=(0.5, 0.02), ncol=2, frameon=True)
+
+plt.tight_layout()
+plt.subplots_adjust(top=0.9, bottom=0.1)
+plt.show()
+
+# Print comparison statistics
+print("\\nColorado Rockies Stadium Performance Comparison:")
+if "COL" in avgDF_2010_sorted.home.values and "COL" in avgDF_2021_sorted.home.values:
+    print(f"2010: {colorado_runs_2010:.2f} runs per game")
+    print(f"2021: {colorado_runs_2021:.2f} runs per game")
+    print(f"Change: {colorado_runs_2021 - colorado_runs_2010:+.2f} runs per game")
+    
+    # League averages
+    league_avg_2010 = avgDF_2010_sorted.totalRuns.mean()
+    league_avg_2021 = avgDF_2021_sorted.totalRuns.mean()
+    print(f"\\nLeague Averages:")
+    print(f"2010: {league_avg_2010:.2f} runs per game")
+    print(f"2021: {league_avg_2021:.2f} runs per game")
+    
+    # Colorado's relative performance
+    col_advantage_2010 = ((colorado_runs_2010 / league_avg_2010) - 1) * 100
+    col_advantage_2021 = ((colorado_runs_2021 / league_avg_2021) - 1) * 100
+    print(f"\\nColorado's Advantage:")
+    print(f"2010: {col_advantage_2010:+.1f}% above league average")
+    print(f"2021: {col_advantage_2021:+.1f}% above league average")
 
 ```
 
