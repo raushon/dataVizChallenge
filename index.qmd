@@ -4,19 +4,11 @@ subtitle: "Mastering the Four Stages of Data Visualization"
 format:
   html: default
 execute:
-  echo: true
+  echo: false
   eval: true
 ---
 
 # 🎯 Object-Oriented Matplotlib Challenge - The Four Stages of Data Visualization
-
-::: {.callout-important}
-## 📊 Challenge Requirements
-- Complete all discussion questions for the four stages of visualization
-- Create professional visualizations using object-oriented matplotlib
-- Demonstrate mastery of the Grammar of Graphics
-- See [Student Analysis Section](#student-analysis-section) for detailed requirements
-:::
 
 ## The Problem: Mastering Object-Oriented Matplotlib Through the Four Stages
 
@@ -26,8 +18,6 @@ execute:
 
 **Our Approach:** We'll work with baseball stadium data to investigate whether Coors Field in Denver, Colorado is truly the most run-friendly ballpark in Major League Baseball. This investigation will take us through all four stages of visualization, demonstrating object-oriented matplotlib techniques along the way.
 
-::: {.callout-warning}
-## ⚠️ AI Partnership Required
 
 This challenge pushes boundaries intentionally. You'll tackle problems that normally require weeks of study, but with Cursor AI as your partner (and your brain keeping it honest), you can accomplish more than you thought possible.
 
@@ -58,7 +48,7 @@ Let's start by loading the baseball data and understanding what we're working wi
 
 ```{python}
 #| label: load-data
-#| echo: true
+#| echo: false
 #| message: false
 #| warning: false
 
@@ -109,9 +99,10 @@ Our purpose is to investigate whether Coors Field in Denver, Colorado is truly t
 
 **Question 1: Hypothesis Formation**
 - Why might high altitude affect baseball performance?  Is Coors Field affected by high altitude?
-:::
+
 **Answer:**
 Hypothesis is that high altitude will make the ballpark more run-friendly.  This is because the lower air density at such a high elevation will result in balls traveling farther than in other parks. Coors Field is located at 5,200 feet above sea level, which is the highest park in the majors. So it is a valid scenario to investigate. This also finishes the first stage of the four stages of visualization - Purpose.
+:::
 
 ## Stage 2: Curation of Content
 
@@ -121,7 +112,7 @@ Let's aggregate the data to get average runs per stadium:
 
 ```{python}
 #| label: stage-2-content
-#| echo: true
+#| echo: false
 
 # Stage 2: Curation of Content
 # Aggregate data to get average runs per stadium
@@ -155,7 +146,7 @@ print(avgDF_2021.head())
 
 **Question 1: Data Aggregation Strategy**
 - How many games are in the dataset? Why do we aggregate individual games into stadium averages before we start the visualization process?
-:::
+
 **Answer:**
 There are 162 games in the dataset.  We aggregate individual games into stadium averages before we start the visualization process because we want to see the average runs and home runs per game for each stadium.  This will give us a better understanding of the performance of each stadium. This finishes the second stage of the four stages of visualization - Curation of Content.
 :::
@@ -168,7 +159,7 @@ Let's explore different visual approaches:
 
 ```{python}
 #| label: stage-3-mapping-exploration
-#| echo: true
+#| echo: false
 
 # Stage 3: Structuring of Visual Mappings
 # Explore different geometries and aesthetics
@@ -240,7 +231,7 @@ Let's create a publication-ready visualization:
 
 ```{python}
 #| label: stage-4-formatting
-#| echo: true
+#| echo: false
 
 # Stage 4: Formatting for Your Audience
 # Create a professional, publication-ready visualization
@@ -312,10 +303,9 @@ print(f"Colorado is {((colorado_runs / avgDF_2010_sorted.totalRuns.mean()) - 1) 
 - What elements make this visualization suitable for a business presentation?
 - Is the annotation on the visualization helpful?  Can you fix its placement?
 
-:::
 **Answer**
 Aligned the bar to sit flush with colorado bar, and the annotation is helpful. I also changed the color to red. The visualization is suitable for a business presenatation. The labels at y axis are clearly mentioned and not overlapping with the bars. The colorado bar is highlighted in red to make it more visible. The average for colorado is clearly mentioned and not overlapping with the bars.
-
+:::
 
 ## Advanced Object-Oriented Techniques
 
@@ -325,7 +315,7 @@ Let's create a comprehensive comparison between 2010 and 2021:
 
 ```{python}
 #| label: advanced-oo-techniques
-#| echo: true
+#| echo: false
 
 # Advanced Object-Oriented Techniques
 # Create a comprehensive comparison visualization
@@ -427,125 +417,14 @@ if "COL" in avgDF_2010_sorted.home.values and "COL" in avgDF_2021_sorted.home.va
 
 **Question 1: Using Subplot Layout**
 - Create a two-facet visualization that shows the total runs for 2010 and 2021 for each stadium in a single figure.  Highlight Colorado in the visualization.
+
 **Answer**
 Completed the visualization. I also stacked the visualizations vertically to save space and make it more readable.
 
 **Question 2: Explanation of the Visualization**
 - Ask AI To Add A Paragraph Here To Explain The Visualization
 - Does AI come to the right conclusion?  If not, why not?
+
 **Answer** Overall, the hypothesis holds: Coors Field continues to be the most run-friendly ballpark in both seasons, with the effect more pronounced in 2010 and still evident in 2021. This is the AI response.
 The answer is not correct. The hypothesis is that Coors Field is the most run-friendly ballpark in both seasons. However, the AI response is that Coors Field is the most run-friendly ballpark in both seasons, with the effect more pronounced in 2010 and still evident in 2021. AI is hallucinating as in 2021 Coors field is among higher but not highest.
 :::
-
-## Student Analysis Section: Mastering Object-Oriented Matplotlib {#student-analysis-section}
-
-**Your Task:** Demonstrate your mastery of object-oriented matplotlib and the four stages of visualization through comprehensive analysis and creation of professional visualizations.
-
-### Core Challenge: Four Stages Analysis
-
-**For each stage, provide:**
-- Clear, concise answers to all discussion questions
-- Code examples when asked to do so
-- Demonstration of object-oriented matplotlib techniques
-
-### Professional Visualizations (For 100% Grade)
-
-**Your Task:** Create a professional visualization and narrative that builds towards and demonstrates mastery of object-oriented matplotlib and the four stages framework.
-
-**Create visualizations showing:**
-- Stadium run-friendliness comparison between 2010 and 2021
-- Focus on Colorado's performance relative to other stadiums
-- Use object-oriented matplotlib techniques throughout
-
-**Your visualizations should:**
-- Use clear labels and professional formatting
-- Demonstrate all four stages of visualization
-- Be appropriate for a business audience
-- Show mastery of object-oriented matplotlib
-- Do not `echo` the code that creates the visualizations
-
-## Getting Started: Repository Setup 🚀
-
-::: {.callout-important}
-## 📁 Getting Started
-
-**Step 1:** Fork and clone this challenge repository: `https://github.com/flyaflya/dataVizChallenge`
-- Fork it to your GitHub account, then clone it from your GitHub account to your local machine
-
-**Step 2:** Set up your Python environment
-- **Recommended:** Use your existing virtual environment from Tech Setup Challenge Part 2
-  - Press `Ctrl+Shift+P` → "Python: Select Interpreter"
-  - Navigate to your existing virtual environment (e.g., `your-previous-project/venv/Scripts/python.exe`)
-  - Install additional packages: `pip install pandas numpy matplotlib seaborn`
-- **Alternative:** Create a new virtual environment following [Quarto documentation](https://quarto.org/docs/projects/virtual-environments.html)
-
-**Step 3:** You're ready to start! The data loading code and starter code for the visualizations are already provided in this file.
-
-**Note:** This challenge uses the same `index.qmd` file you're reading right now - you'll edit it to complete your analysis.
-:::
-
-::: {.callout-warning}
-## ⚠️ Cloud Storage Warning
-
-**Avoid using Google Drive, OneDrive, or other cloud storage for Python projects!** These services can cause issues with package installations and virtual environment corruption. Keep your Python projects in a local folder like `C:\Users\YourName\Documents\` instead.
-:::
-
-::: {.callout-note}
-## 🎯 Object-Oriented Matplotlib Philosophy
-
-*Think of object-oriented matplotlib like directing a movie - you control every element (camera angles, lighting, actors) to create the perfect scene that tells your story.*
-:::
-
-::: {.callout-warning}
-## 💾 Important: Save Your Work Frequently!
-
-**Before you start:** Make sure to commit your work often using the Source Control panel in Cursor (Ctrl+Shift+G or Cmd+Shift+G). This prevents the AI from overwriting your progress and ensures you don't lose your work.
-
-**Commit after each major step:**
-- After completing each stage section
-- After adding your visualizations
-- After completing your advanced object-oriented techniques
-- Before asking the AI for help with new code
-
-**How to commit:**
-1. Open Source Control panel (Ctrl+Shift+G)
-2. Stage your changes (+ button)
-3. Write a descriptive commit message
-4. Click the checkmark to commit
-
-*Remember: Frequent commits are your safety net!*
-:::
-
-## Grading Rubric 🎓
-
-**85% Grade:** Complete discussion questions for all 4 stages with comprehensive, well-reasoned responses.
-
-**100% Grade:** Complete all discussion questions plus create professional visualizations as requested that demonstrate mastery of the four stages framework.
-
-## Submission Checklist ✅
-
-**Minimum Requirements (Required for Any Points):**
-
-- [ ] Fork repository named "dataVizChallenge" to your GitHub account
-- [ ] Clone repository locally using Cursor (or VS Code)
-- [ ] Completed discussion questions for at least 3 of the 4 stages
-- [ ] Document rendered to HTML successfully
-- [ ] HTML files uploaded to your repository
-- [ ] GitHub Pages enabled and working
-- [ ] Site accessible at `https://[your-username].github.io/dataVizChallenge/`
-
-**85% Grade Requirements:**
-
-- [ ] Complete discussion questions for all 4 stages
-- [ ] Comprehensive, well-reasoned responses showing deep understanding
-
-**100% Grade Requirements:**
-
-- [ ] All discussion questions completed with professional quality
-- [ ] Professional visualization as requested demonstrating four stages framework
-
-**Report Quality (Critical for Higher Grades):**
-
-- [ ] Professional writing style (no AI-generated fluff)
-- [ ] Concise analysis that gets to the point
-- [ ] Clear demonstration of object-oriented matplotlib 
